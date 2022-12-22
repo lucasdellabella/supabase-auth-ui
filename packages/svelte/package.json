@@ -1,5 +1,5 @@
 {
-	"name": "@supabase/auth-ui-svelte",
+	"name": "@lucasdellabella/supabase-auth-ui-svelte",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
