@@ -8,6 +8,7 @@ interface SocialAuthProps {
   supabaseClient: SupabaseClient
   socialLayout: SocialLayout
   providers?: Provider[]
+  scopes: Record<Provider, string>
   redirectTo: RedirectTo
   onlyThirdPartyProviders: boolean
   view: 'sign_in' | 'sign_up'
@@ -21,6 +22,7 @@ function SocialAuth({
   supabaseClient,
   socialLayout = 'vertical',
   providers,
+  scopes,
   redirectTo,
   onlyThirdPartyProviders,
   view,
@@ -36,7 +38,7 @@ function SocialAuth({
     setLoading(true)
     const { error } = await supabaseClient.auth.signInWithOAuth({
       provider,
-      options: { redirectTo },
+      options: { scopes: scopes[provider] || '', redirectTo },
     })
     if (error) setError(error.message)
     setLoading(false)

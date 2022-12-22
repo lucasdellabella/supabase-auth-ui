@@ -76,11 +76,14 @@ export interface Appearance {
   }
 }
 
+export type ProviderScopes = Record<Provider, string>
+
 export interface Auth {
   supabaseClient: SupabaseClient
   children?: React.ReactNode
   socialLayout?: SocialLayout
   providers?: Provider[]
+  scopes?: ProviderScopes
   view?: ViewType
   redirectTo?: RedirectTo
   onlyThirdPartyProviders?: boolean

@@ -1,7 +1,13 @@
+import { Provider } from '@supabase/supabase-js'
 import { createStitches, createTheme } from '@stitches/core'
 import { merge } from '../../utils'
 import React, { useEffect, useState } from 'react'
-import { Auth as AuthProps, Localization, I18nVariables } from '../../types'
+import {
+  Auth as AuthProps,
+  Localization,
+  I18nVariables,
+  ProviderScopes,
+} from '../../types'
 import { VIEWS } from './../../constants'
 import {
   EmailAuth,
@@ -23,6 +29,7 @@ function Auth({
   supabaseClient,
   socialLayout = 'vertical',
   providers,
+  scopes = {} as ProviderScopes,
   view = 'sign_in',
   redirectTo,
   onlyThirdPartyProviders = false,
@@ -126,6 +133,7 @@ function Auth({
           appearance={appearance}
           supabaseClient={supabaseClient}
           providers={providers}
+          scopes={scopes}
           socialLayout={socialLayout}
           redirectTo={redirectTo}
           onlyThirdPartyProviders={onlyThirdPartyProviders}
